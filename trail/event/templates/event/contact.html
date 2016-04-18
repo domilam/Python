@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} - Contact{% endblock %}
+
+{% block event %}
+<section class="panel panel-default">
+    <div class="panel-heading">Contact</div>
+    <section class="panel-body">
+        <form action="{% url 'contact' %}" method="POST">
+            {% csrf_token %}
+            {{ contactform.as_p }}
+            <input class="btn label-warning pull-right" type="submit" value="Envoyer">
+        </form>
+    </section>
+</section>
+{% endblock %}

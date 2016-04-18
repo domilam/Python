@@ -1,0 +1,26 @@
+    <table class="table table-striped">
+    <thead>
+    <tr>
+        <th>NOM</th>
+        <th>PRENOM</th>
+        <th>SEXE</th>
+        <th>DATE DE NAISSANCE</th>
+        <th>CLUB</th>
+        <th>VALIDE</th>
+        <th>DOSSARD</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for inscrit in listinscrit %}
+        <tr>
+            <td>{{ inscrit.runner.last_name}}</td>
+            <td>{{ inscrit.runner.first_name}}</td>
+            <td>{{ inscrit.runner.sex}}</td>
+            <td>{{ inscrit.runner.birth_date}}</td>
+            <td>{{ inscrit.club}}</td>
+            <td>{{ inscrit.valide}}</td>
+            <td>{{ inscrit.dossard}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    </table>

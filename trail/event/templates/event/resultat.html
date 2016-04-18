@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %} - Résultats{% endblock %}
+
+{% block event %}
+<section class="panel panel-default">
+    <div class="panel-heading tk-gesta">Résultats</div>
+    <section class="panel-body tk-gesta">
+     {% for event in events %}
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading inter">
+              <h4 class="panel-title">
+               {% with ind=forloop.counter0 %}{% for key,value in liste_id.items %}
+               {% if key == ind %}
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#{{value}}">
+                  <i class="glyphicon glyphicon-pushpin"></i>{{event.event}} - le {{event.startdate}}
+                </a>
+              </h4>
+            </div>
+            <div id={{value}} class="panel-collapse collapse">
+            {% endif %}{% endfor %}{% endwith %}
+              <div class="panel-body">
+                 <section class="row row_img">
+                    <div class="col-xs-12 col-sm-2">{% if event.affiche %}<img src="{{ event.affiche.url }}" class="img_affiche" alt="">{% endif %}</div>
+                    <section class="col-xs-12 col-sm-10">
+                        <article class="row">
+                            <p>{{event.description|safe}}</p>
+                            <p>{{event.organizer.organizer}} - <a href="{{event.website}}">{{event.website}}</a></p>
+                        </article>
+                        <aside class="row">
+                            {% if event.race_set.all %}
+                                <h3>{{ event.race_set.all|length }} courses au choix</h3>
+                            {% else %}
+                                <h3>1 course</h3>
+                                <p><a href=""><input class="btn label-warning pull-right tk-gesta" value="Inscription"></a></p>
+                            {% endif %}
+                            {% for race in event.race_set.all %}
+                            <aside class="col-xs-4 col-sm-4">
+                                <div class="well">
+                                    <p><a href=""><input class="btn label-warning center-block tk-gesta" value="Inscription"></a></p>
+                                    <br>
+                                    <h3>{{race.race}}</h3>
+                                    <h4>Distance: {{race.distance}} {{race.unit}} - dénivelé: {{race.height_difference}}</h4>
+                                    <h4>Départ: {{race.date_race}}</h4>
+                                    <h4>Nombre max de coureurs: {{race.max_runner}}</h4>
+                                    {% if race.affiche %}
+                                    <img src="{{ race.affiche.url }}" alt="" class="img_race img_responsive">
+                                    {% endif %}
+                                </div>
+                            </aside>
+                            {% endfor %}
+                        </aside>
+                     </section>
+
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+    </section>
+</section>
+{% endblock %}

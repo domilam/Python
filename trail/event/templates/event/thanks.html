@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %} - thanks{% endblock %}
+
+{% block event %}
+<section class="panel panel-default">
+    <div class="panel-heading">Contact</div>
+    <section class="panel-body">
+        <form action="{% url 'contact' %}">
+            <h4>Merci, votre message a bien été envoyé</h4>
+            <p>à bientôt</p>
+            <a href="{% url 'accueil' %}">Retour à l'accueil</a>
+        </form>
+    </section>
+</section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mon réseau social - {% block ss-titre %}{% endblock %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'social/styles.css' %}" />
+
+</head>
+<body>
+    <header>
+    	<aside>
+        	<a href="{% url 'admin:index' %}">Admin</a>
+        </aside>
+
+        {% block entete %}
+            <h1>FACEROOMS</h1>
+        {% endblock %}
+
+    </header>
+
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <footer>
+        Mon mini réseau social - copyright  Dominique LAMEYNARDIE
+    </footer>
+</body>

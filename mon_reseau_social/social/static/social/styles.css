@@ -1,0 +1,155 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: #222;
+	border-bottom: 1px dashed #000;
+	text-decoration: none;
+}
+
+.container {
+	margin: 0 auto;
+	width: 1000px;
+}
+
+header {
+    background-color: #e1e4e9;
+
+    height: 60px;
+    padding-top: 10px;
+    padding-bottom: 13px;
+}
+
+header aside {
+	float: right;
+	margin-right: 20px;
+}
+
+header h1 {
+	margin: 0 30px;
+	font-size: 1.5em;
+
+	font-family: 'Open Sans';
+}
+
+#accueil{
+	margin: 0px 30px;
+}
+footer {
+    background-color: #ECECEC;
+    color: #333;
+    height: 90px;
+    padding: 20px;
+}
+
+
+form label {
+	display: block;
+	float: left;
+	font-weight: lighter;
+	width: 200px;
+	text-align: justify;
+	font-family: Arvo, Arial;
+
+}
+
+form input, form select, form textarea {
+	border: 1px solid #d9d9d9;
+	color: #343434;
+	margin: 5px 0px 5px 0px;
+	padding: 10px;
+	vertical-align: bottom
+}
+
+form textarea {
+	height: 50px;
+	width: 80%;
+}
+
+form p { clear: both; }
+
+.clear { clear:both;}
+
+
+/**********************/
+
+.titre-article, .titre-comments {
+	border-bottom: 1px dashed #c3c3c3;
+	margin-bottom: 0;
+}
+
+.infos-article {
+	margin: 5px 0 0 15px;
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+.titre-comments {
+	margin-top: 50px;
+}
+
+.contenu-article {
+	margin: 20px auto;
+	width: 80%;
+}
+
+input[type="submit"] {
+    background-color: #0078E7;
+    color: #FFF;
+    font-family: Verdana;
+    font-size: 0.9em;
+    padding: 0.5em 1em;
+    border: 0px none transparent;
+    text-decoration: none;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.message{
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px 10px 5px 10px;
+    margin-bottom: 20px;
+    background-color: #efe8e8;
+}
+
+#text_message{
+    padding: 0px 15px;
+}
+.infos{
+    display: inline-block;
+    width: 200px;
+    height:50px;
+    vertical-align: top;
+    font-style: italic;
+}
+
+#auth{
+    font-weight: bold;
+}
+img{
+    display:inline-block;
+    width:50px;
+    height:50px;
+
+}
+.commentaire{
+    border-radius: 10px 10px 10px 10px;
+    padding: 1px 10px 1px 10px;
+    margin: 5px 10px 5px 10px;
+    background-color: white;
+}
+
+.info_auteur_com{
+    font-style: italic;
+    font-weight: bold;
+}
+
+.info_time_com{
+    font-style: italic;
+}

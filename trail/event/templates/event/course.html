@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} - Courses{% endblock %}
+
+{% block event %}
+<section class="panel panel-default">
+    <div class="panel-heading">Courses</div>
+    <section class="panel-body">
+     {% for race in races %}
+        <div class="row">
+            <div class="col-md-2">
+                <div class="btn-group btn-group-vertical">
+                   <button id={{race.pk}} class="coureur btn btn-default">{{ race.race }}<i class="glyphicon glyphicon-chevron-down"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="list_coureur{{race.pk}}">
+            </div>
+        </div>
+
+     {% endfor %}
+    </section>
+</section>
+{% endblock %}
+
+{% block sc %}
+<script type="text/javascript">
+$(document).ready(function() {
+    $('.coureur').bind('click', function () {
+        sel = '.list_coureur'+this.id
+        $(sel).html('<img src="{% static 'assets/images/ajax-loader.gif' %}">');
+        $.get("/event/listrunner/"+this.id, function(data) {
+             guess_result = data;
+             $(sel)[0].innerHTML=guess_result;
+        });
+    });
+});
+</script>
+{% endblock %}

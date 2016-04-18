@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block ss-titre %}OpenFaceRooms{% endblock %}
+
+{% block entete %}
+    <h1>FACEROOMS- Accueil</h1>
+{% endblock %}
+
+{% block content %}
+    {% for auteur in auteurs %}
+        <p>
+            <a href="{% url 'profil' auteur.pseudo %}">{{ auteur.pseudo }}</a>
+        </p>
+    {% endfor %}
+{% endblock %}

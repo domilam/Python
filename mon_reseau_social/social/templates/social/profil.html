@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n staticfiles %}
+{% load humanize %}
+
+
+{% block ss-titre %}OpenFaceRooms{% endblock %}
+
+{% block entete %}
+    <h1>FACEROOMS - Profil</h1>
+    <a href="{% url 'accueil' %}" id="accueil">Accueil</a>
+{% endblock %}
+
+{% block content %}
+    <h3>Profil</h3>
+    <!-- on parcourt tous les messages -->
+    {% for message in list_message %}
+        <!-- on affiche uniquement les messages du pseudo demandé ou ceux postés sur son mur -->
+        {% if message.auteur_message.pseudo == pseudo or message.recup_message_membre.pseudo == pseudo %}
+            <div>
+                <img src="{% static 'social/avatar.png' %}" alt="">
+                <!--dans la div infos, on affiche l'auteur du message et éventuellement le destinataire -->
+                <div class="infos">
+                    <span id="auth">
+                        {{ message.auteur_message }}
+                        {% if message.recup_message_membre %} <!-- si le message vient d'un autre membre -->
+                            -->{{ message.recup_message_membre }}<!-- on récupère le destinataire du message -->
+                        {% endif %}
+                    </span><br>
+                    {{ message.date_message }}
+                </div>
+
+                <!-- on affiche dans la div message, les messages et les commentaires éventuels -->
+                <div class="message">
+                    <p id="text_message">{{ message.contenu_message }}</p>
+
+                    <!-- on affiche dans la div commentaire, les éventuels commentaires du message -->
+                        <div class="commentaire">
+                            {% for commentaire in message.commentaires %}
+                                <p>
+                                    <span class="info_auteur_com">{{ commentaire.auteur_commentaire}} : </span>
+                                    {{ commentaire.contenu_commentaire }}<br>
+                                    <span class="info_time_com">{{ commentaire.date_commentaire|naturaltime}}</span>
+                                </p>
+                            {% endfor %}
+
+                            <!-- Ce formulaire est passif -->
+                            <form action="#">
+                                <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Ajouter votre commentaire"></textarea>
+                                <input class="formulaire" type="submit" value="Envoyer">
+                            </form>
+
+                        </div>
+
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
